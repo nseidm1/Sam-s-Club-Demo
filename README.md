@@ -4,7 +4,7 @@ intermediary layer, eventually getting to the api service layer. Breaking
 things down this way allows for optimal separation of concerns, with scope
 of functionality effectively being modularized. Activity and fragment
 levels are intentionally to contain predominantly UI lifecycle callback
-implementations, along with functions that effect and of the primary
+implementations, along with functions that effect any of the primary
 UI components of the hierarchy. An extension function is used to
 house the pagination functionality. Dependency injection is used
 to vary the network layer for purposed of test mocking requirements.
