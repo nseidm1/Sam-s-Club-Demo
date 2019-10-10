@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.text.TextUtils"/>
+        <import type="android.view.View"/>
+        <variable name="data" type="com.noahseidman.samsclub.viewmodels.ProductViewModel"/>
+        <variable name="callback" type="com.noahseidman.samsclub.interfaces.ProductCallback"/>
+    </data>
+
+    <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                                       android:onClick="@{(v) -> callback.onProductClick(v, data)}"
+                                       android:layout_height="wrap_content" android:layout_margin="8dp">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:background="?attr/selectableItemBackground"
+                android:layout_height="match_parent">
+            <RelativeLayout android:id="@+id/left_container" android:layout_width="0dp"
+                            android:layout_weight=".4"
+                            android:layout_height="wrap_content" android:orientation="vertical"
+                            android:animateLayoutChanges="true">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_marginTop="8dp"
+                          android:layout_alignParentTop="true"
+                          android:layout_centerHorizontal="true"
+                          android:id="@+id/price"
+                          android:text="@{data.price}" android:textColor="@color/colorPrimary" android:textStyle="bold"
+                          android:textSize="18sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_centerHorizontal="true"
+                          android:id="@+id/inStock"
+                          android:layout_below="@id/price"
+                          android:textSize="18sp"
+                          android:layout_marginBottom="8dp"
+                          android:text="@{data.inStock}" android:textColor="@color/black"/>
+                <ImageView android:layout_width="match_parent" android:layout_height="wrap_content"
+                           android:layout_centerVertical="true"
+                           android:layout_below="@id/inStock"
+                           android:adjustViewBounds="true"
+                           android:transitionName="image"
+                           android:id="@+id/image"
+                           app:imageUrl="@{data.productImage}" android:scaleType="fitCenter"
+                           android:contentDescription="@{data.shortDescription}"
+                           android:layout_gravity="center_vertical"/>
+            </RelativeLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_weight=".6" android:orientation="vertical"
+                          android:padding="8dp"
+                          android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/productName"
+                          android:text="@{data.productName}" android:textColor="@color/black"
+                          android:layout_marginBottom="8dp" android:textStyle="bold" android:textSize="18sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:text="@{data.shortDescription}"
+                          android:visibility="@{TextUtils.isEmpty(data.shortDescription) ? View.GONE : View.VISIBLE}"
+                          android:textColor="@color/black"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/ratingCount"
+                          android:text="@{data.ratingCount}" android:textColor="@color/black"
+                          android:layout_marginBottom="8dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/reviewCount"
+                          android:text="@{data.reviewCount}" android:textColor="@color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

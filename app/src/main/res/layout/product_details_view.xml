@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.text.TextUtils"/>
+        <import type="android.view.View"/>
+        <variable name="data" type="com.noahseidman.samsclub.viewmodels.ProductViewModel"/>
+        <variable name="callback" type="com.noahseidman.samsclub.interfaces.ImageLoadedCallback"/>
+    </data>
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_marginTop="12dp" android:layout_marginStart="12sp" android:layout_marginEnd="12dp"
+                      android:text="@{data.productName}" android:textColor="@color/black"
+                      android:id="@+id/productName"
+                      android:gravity="center_horizontal"
+                      android:layout_marginBottom="8dp" android:textStyle="bold" android:textSize="18sp"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_marginStart="12sp" android:layout_marginEnd="12dp"
+                          android:gravity="center_horizontal" android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/price"
+                          android:layout_marginEnd="12dp"
+                          android:text="@{data.price}" android:textColor="@color/colorPrimary" android:textStyle="bold"
+                          android:textSize="18sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/inStock"
+                          android:textSize="18sp"
+                          android:text="@{data.inStock}" android:textColor="@color/black"/>
+            </LinearLayout>
+            <ImageView android:layout_width="match_parent" android:layout_marginStart="12sp"
+                       android:layout_marginEnd="12dp"
+                       android:contentDescription="@{data.shortDescription}"
+                       android:layout_marginTop="12dp"
+                       app:imageUrl="@{data.productImage}" app:callback="@{callback}"
+                       android:adjustViewBounds="true" android:scaleType="fitCenter"
+                       android:layout_height="wrap_content" android:id="@+id/image"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_marginStart="12sp" android:layout_marginEnd="12dp"
+                          android:layout_marginTop="12dp"
+                          android:gravity="center_horizontal" android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_marginEnd="12dp"
+                          android:id="@+id/ratingCount"
+                          android:text="@{data.ratingCount}" android:textColor="@color/black"
+                          android:textStyle="bold"
+                          android:textSize="18sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textSize="18sp"
+                          android:textStyle="bold"
+                          android:id="@+id/reviewCount"
+                          android:text="@{data.reviewCount}" android:textColor="@color/black"/>
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="@{data.longDescription}"
+                      android:id="@+id/longDescription"
+                      android:layout_marginTop="12dp"
+                      android:layout_marginBottom="12dp"
+                      android:layout_marginStart="12sp" android:layout_marginEnd="12dp"
+                      android:visibility="@{TextUtils.isEmpty(data.longDescription) ? View.GONE : View.VISIBLE}"
+                      android:textColor="@color/black"/>
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Sam\'s Club Demo</string>
+    <string name="base_url">https://mobile-tha-server.firebaseapp.com/</string>
+    <string name="nothing_yet">No Items Yet…</string>
+    <string name="error_loading_page">Error Loading Page</string>
+    <string name="reviews">Reviews: %s</string>
+    <string name="ratings">Rating: %s</string>
+    <string name="in_stock">In Stock: %s</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="product_description">Product Description</string>
+    <string name="products">Products</string>
+</resources>

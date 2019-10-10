@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar android:layout_width="match_parent" android:id="@+id/toolbar"
+                                           android:background="@color/colorPrimary"
+                                           app:titleTextColor="@color/white"
+                                           android:layout_height="wrap_content">
+
+            <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content"
+                         android:layout_gravity="end" android:indeterminateTint="@color/white"
+                         android:id="@+id/progress" android:visibility="gone"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ViewSwitcher android:id="@+id/switcher" android:inAnimation="@android:anim/fade_in"
+                      android:outAnimation="@android:anim/fade_out" android:layout_width="match_parent"
+                      android:layout_height="0dp" android:layout_weight="1">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:gravity="center_horizontal" android:layout_marginTop="12dp">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textSize="20sp"
+                          android:textColor="@color/black" android:text="@string/nothing_yet"/>
+                <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/no_assets"
+                        android:layout_width="150dp"
+                        android:layout_height="75dp"
+                        android:hardwareAccelerated="true"
+                        app:lottie_autoPlay="true"
+                        app:lottie_enableMergePathsForKitKatAndAbove="true"
+                        app:lottie_fileName="nothing_yet.json"
+                        app:lottie_loop="true"/>
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent" android:id="@+id/recycler"
+                                                       android:layout_height="match_parent"/>
+        </ViewSwitcher>
+    </LinearLayout>
+</layout>
